@@ -16,7 +16,7 @@ app.get('/' , async (req , res) => {
     })
 })
 
-router.use('/api' , router)
+app.use('/api' , router)
 
 
 console.log(process.env.MDB_URL);
