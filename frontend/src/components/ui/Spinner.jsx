@@ -12,18 +12,26 @@ const spinnerVariants = cva(
                 sm : 'h-2 w-2',
                 lg : 'h-6 w-6',
                 icon : 'h-10 w-10'
+            },
+            color : {
+                light : 'text-muted-foreground',
+                dark : 'text-white'
             }
         },
         defaultVariants : {
-            size : 'default'
+            size : 'default',
+            color : 'dark'
         }
     }
 )
 
 
-const Spinner = ({size}) => {
+const Spinner = ({
+    color,
+    size
+}) => {
     return (
-        <Loader className={cn(spinnerVariants({size}))} />
+        <Loader className={cn(spinnerVariants({size , color}))} />
     )
 }
 

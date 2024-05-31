@@ -1,8 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { ThemeProvider } from './components/ThemeProvider'
-import HomePage from './Home/HomePage'
 import { Suspense, lazy } from 'react'
+const ResumePage = lazy(() => import( './Resume/ResumePage'))
+const CoverLetterPage = lazy(() => import( './CoverLetter/CoverLetterPage'))
+const HomePage  = lazy(() => import('./Home/HomePage'))
+const DashBoardPage  =  lazy(() => import('./Dashboard/DashBoardPage')) 
 const Spinner  = lazy(() => import('./components/ui/Spinner'))
 
 function App() {
@@ -13,6 +16,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element = {<HomePage/>}  />
+          <Route path='/dashboard' element = {<DashBoardPage/>}  />
+          <Route path='/dashboard/resume' element = {<ResumePage/>}  />
+          <Route path='/dashboard/cover' element = {<CoverLetterPage/>}  />
         </Routes>
       </BrowserRouter>
     </Suspense>

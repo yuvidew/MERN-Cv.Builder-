@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { SignIn } from './_components/SignIn'
 import { ModeToggle } from '@/components/ui/ModeTogle'
 import { SignUp } from './_components/SignUp'
-import { Button } from '@/components/ui/button'
 import { Footer } from '@/components/Footer'
+import { useAuth } from '@/hook/useAuth'
+import { useNavigate } from 'react-router-dom'
 
 
 const HomePage = () => {
+    const [isTrue , onAuth] = useAuth()
+    const navigate = useNavigate()
+    
+    useEffect(() => {
+        if(localStorage.getItem('cv_user_token')){
+            navigate('/dashboard')
+        }
+    } , [])
+
     return (
         <div className=' h-[100vh] dark:bg-stone-800 '>
             <div className=' container h-full'>
@@ -23,16 +33,16 @@ const HomePage = () => {
                         <p className=' text-center mt-3 text-stone-800 dark:text-stone-300'
                         >express way to create resume</p>
                         <div className=' lg:w-[40rem] md:w-[30rem] w-full  mt-[2rem] m-auto'>
-                            <Tabs defaultValue="signin" className="w-full">
+                            <Tabs defaultValue={isTrue ? "signin" : "signup"} className="w-full">
                                 <TabsList className = "w-full">
                                     <TabsTrigger value="signin" className = "w-full ">Sign In</TabsTrigger>
                                     <TabsTrigger value="signup" className = "w-full ">Sign Up</TabsTrigger>
                                 </TabsList>
                                 <TabsContent value="signin">
-                                    <SignIn/>
+                                    <SignIn onAuth = {onAuth} />
                                 </TabsContent>
                                 <TabsContent value="signup">
-                                    <SignUp/>
+                                    <SignUp onAuth = {onAuth} />
                                 </TabsContent>
                             </Tabs>
                         </div>

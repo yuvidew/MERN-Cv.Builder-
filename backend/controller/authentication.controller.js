@@ -35,7 +35,7 @@ const signIn = async (req , res) => {
         const result = await userSchema.findOne({email : email})
         if(result.email){
             await bcrypt.compare(password , result.password , (err , check) => {
-                if(err) return res.status(404).json({msg : "check the password!"})
+                if(err) return res.status(404).json({msg : "invalid password!"})
                 if(check) {
                     jwt.sign({result} , process.env.JWT_key , (err , token) => {
                         if(err) {
