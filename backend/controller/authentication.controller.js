@@ -14,7 +14,6 @@ const signUp = async (req , res) => {
                 password : hashPassword
             })
             
-            console.log(result);
             if(result){            
                 res.status(200).json({
                     msg : "Account in successfully created!"
