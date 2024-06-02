@@ -22,9 +22,6 @@ const resumeSchema = new mongoose.Schema({
     state : {
         type : String
     },
-    pincode : {
-        type : Number
-    },
     objective : {
         type : String
     },

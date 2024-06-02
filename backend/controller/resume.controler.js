@@ -22,6 +22,32 @@ const createResume = async( req , res) => {
     }
 }
 
+const addPersonal = async (req , res) => {
+    const {id} = req.params;
+    const {name , email , number , linkedin , city , state , objective} = req.body;
+
+    try {
+        const result = await resumeModel.findById(id);
+        result.name = name;
+        result.email = email;
+        result.number = number;
+        result.linkedin = linkedin;
+        result.city = city;
+        result.state = state;
+        result.objective = objective;
+
+        result.save()
+
+        return res.status(201).json({
+            msg : 'personal info is added!'
+        })
+
+    } catch (error) {
+        return res.status(200).json(error) 
+    }
+}
+
 module.exports = {
-    createResume
+    createResume,
+    addPersonal
 }

@@ -1,6 +1,6 @@
 const express = require('express')
 const {signUp, signIn } = require('../controller/authentication.controller')
-const { createResume } = require('../controller/resume.controler')
+const { createResume, addPersonal } = require('../controller/resume.controler')
 const { createLetter } = require('../controller/cover.letter.controller')
 const router = express.Router()
 
@@ -12,6 +12,7 @@ router.post('/post/signin' , signIn)
 /** resume routers */
 
 router.post('/post/create/resume' , createResume)
+router.post('/post/create/resume/add-personal-info/:id' , addPersonal)
 
 /** letter routers */
 
