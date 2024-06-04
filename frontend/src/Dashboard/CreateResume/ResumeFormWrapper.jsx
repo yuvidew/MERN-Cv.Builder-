@@ -3,6 +3,10 @@ import { ArrowRight, ChevronRight } from 'lucide-react'
 import React, { useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { PersonalInfoFrom } from './_components/PersonalInfoFrom'
+import { WorkExperience } from './_components/WorkExperience'
+import { Projects } from './_components/Projects'
+import { EducationFrom } from './_components/EducationFrom'
+import { SkillsForm } from './_components/SkillsForm'
 
 export const ResumeFormWrapper = () => {
   const [formType , setFormType] = useSearchParams({
@@ -28,22 +32,22 @@ export const ResumeFormWrapper = () => {
     {
       text : 'Work Experience',
       url : 'work-Experience',
-      comp: 'second Comp'
+      comp: <WorkExperience onAddType = {onSelect} formType = {"projects"} />
     },
     {
       text : 'Projects',
       url : 'projects',
-      comp: 'third Comp'
+      comp: <Projects onAddType = {onSelect} formType = {"education"} />
     },
     {
       text : 'Education',
       url : 'education',
-      comp: 'three Comp'
+      comp: <EducationFrom onAddType = {onSelect} formType = {"skills"} />
     },
     {
       text : 'Skills',
       url : 'skills',
-      comp: 'four Comp'
+      comp: <SkillsForm />
     },
   ]
 

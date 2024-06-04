@@ -27,10 +27,10 @@ const resumeSchema = new mongoose.Schema({
     },
     working : [
         {
-            organization : String,
+            company : String,
             jobDurationForm : String,
             jobDurationTo : String,
-            jobExperience : [String],
+            jobExperience : String,
         }
     ],
     education : [
@@ -45,7 +45,7 @@ const resumeSchema = new mongoose.Schema({
     projects : [
         {
             projectName : String,
-            projectDetails : [String],
+            projectDetails : String,
             projectStart : String,
             projectEnd : String,
         }
@@ -53,6 +53,9 @@ const resumeSchema = new mongoose.Schema({
     skills : [String],
     userId : {
         type : String
+    },
+    completePercentage : {
+        type : Number
     }
 })
 

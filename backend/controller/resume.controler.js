@@ -6,6 +6,7 @@ const createResume = async( req , res) => {
     try {
         const result = await resumeModel.create({
             resumeName : name,
+            completePercentage : 0,
             userId
         })
 
@@ -35,7 +36,7 @@ const addPersonal = async (req , res) => {
         result.city = city;
         result.state = state;
         result.objective = objective;
-
+        result.completePercentage = 20
         result.save()
 
         return res.status(201).json({
@@ -47,7 +48,147 @@ const addPersonal = async (req , res) => {
     }
 }
 
+const addWorkExperience = async (req , res) => {
+    const {id} = req.params;
+
+    try {
+        const result = await resumeModel.findById(id)
+        result.working.push(req.body);
+        result.completePercentage = 40
+        result.save()
+
+        if(req.body) {
+            return res.status(201).json({
+                msg : 'personal info is added!'
+            })
+        }
+
+    } catch (error) {
+        return res.status(404).json(error)
+    }
+}
+
+const addProject = async (req , res) => {
+    const {id} = req.params ; 
+    try {
+        const result = await resumeModel.findById(id)
+        result.projects.push(req.body);
+        result.completePercentage = 60,
+        result.save()
+
+        if(req.body) {
+            return res.status(201).json({
+                msg : 'personal info is added!'
+            })
+        }
+    } catch (error) {
+        return res.status(404).json(error)
+    }
+}
+
+const getProjectList = async (req , res) => {
+    const {id} = req.params;
+
+    try {
+        const result = await resumeModel.findById(id)
+        result.save()
+
+        return res.status(201).json(result.projects)
+    } catch (error) {
+        return res.status(404).json(error)
+    }
+}
+
+const deleteProject = async (req , res) => {
+    const {id , projectName} = req.params;
+
+    try {
+        const result = await resumeModel.findByIdAndUpdate(
+            id, 
+            { $pull: { projects: { projectName: projectName } } },
+            { new: true }
+        )
+
+        if(!result) return res.status(401).json({
+            msg : 'Failed to delete'
+        })
+
+        return res.status(201).json({
+            msg : 'project is deleted'
+        })
+    } catch (error) {
+        return res.status(404).json(error)
+    }
+}
+
+const addEducation = async (req , res) => {
+    const {id} = req.params;
+    try {
+        const result = await resumeModel.findById(id);
+
+        if(req.body){
+            result.education.push(req.body);
+            result.completePercentage = 80
+            result.save()
+            return res.status(201).json({
+                msg : 'Eduction detail is added!'
+            })
+        }
+
+        return res.status(401).json({
+            msg : 'Failed to detail is added!'
+        })
+
+    } catch (error) {
+        return res.status(404).json(error)
+    }
+}
+
+const addSkills = async (req , res) => {
+    const {id} = req.params;
+
+    try {
+        const result = await resumeModel.findById(id);
+
+        if(req.body){
+            result.skills = req.body;
+            result.completePercentage = 100
+            result.save()
+
+            return res.status(201).json({
+                msg : 'skills is added!'
+            })
+        }
+
+        return res.status(401).json({
+            msg : 'Failed to add skills!'
+        })
+
+    } catch (error) {
+        return res.status(404).json(error)
+    }
+}
+
+const getCompletePercentage = async (req , res) => {
+    const {id} = req.params;
+
+    try {
+        const result = await resumeModel.findById(id);
+        return res.status(201).json(result.completePercentage)
+    } catch (error) {
+        return res.status(404).json(error)
+    }
+}
+
+
 module.exports = {
     createResume,
-    addPersonal
+    addPersonal,
+    addWorkExperience,
+    addProject,
+    getProjectList,
+    deleteProject,
+    addEducation,
+    addSkills,
+    getCompletePercentage
 }

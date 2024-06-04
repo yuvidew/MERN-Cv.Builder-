@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { ChevronRight } from 'lucide-react'
 import { useCreate } from '@/hook/useCreate'
 import { useMutation } from '@tanstack/react-query'
-import { useNavigate } from 'react-router-dom'
 import Spinner from '@/components/ui/Spinner'
 
 const id = localStorage.getItem('resumeId')
