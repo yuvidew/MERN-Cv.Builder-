@@ -1,6 +1,6 @@
 const express = require('express')
 const {signUp, signIn } = require('../controller/authentication.controller')
-const { createResume, addPersonal, addWorkExperience, addProject, getProjectList, deleteProject, addEducation, addSkills, getCompletePercentage } = require('../controller/resume.controler')
+const { createResume, addPersonal, addWorkExperience, addProject, getProjectList, deleteProject, addEducation, addSkills, getCompletePercentage, getAllResume } = require('../controller/resume.controler')
 const { createLetter } = require('../controller/cover.letter.controller')
 const router = express.Router()
 
@@ -20,6 +20,7 @@ router.delete('/delete/resume/delete-project/:id/:projectName' , deleteProject)
 router.post('/post/create/resume/add-eduction-detail/:id' , addEducation)
 router.post('/post/create/resume/add-skills/:id' , addSkills)
 router.get('/get/resume/percentage/:id' , getCompletePercentage)
+router.get('/get/resumes/:userId' , getAllResume)
 
 
 /** letter routers */

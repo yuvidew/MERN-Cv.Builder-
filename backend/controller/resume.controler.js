@@ -180,6 +180,16 @@ const getCompletePercentage = async (req , res) => {
     }
 }
 
+const getAllResume = async (req , res) => {
+    let {userId} = req.params;
+    try {
+        const result = await resumeModel.find({userId});
+        return res.status(200).json(result)
+    } catch (error) {
+        return res.status(404).json(error)
+    }
+}
+
 
 module.exports = {
     createResume,
@@ -190,5 +200,6 @@ module.exports = {
     deleteProject,
     addEducation,
     addSkills,
-    getCompletePercentage
+    getCompletePercentage,
+    getAllResume
 }
