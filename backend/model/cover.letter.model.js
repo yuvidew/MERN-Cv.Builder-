@@ -4,10 +4,7 @@ const letterSchema = new mongoose.Schema({
     letterName : {
         type : String,
     },
-    firstName : {
-        type : String,
-    },
-    lastName : {
+    name : {
         type : String,
     },
     profession : {
@@ -16,7 +13,7 @@ const letterSchema = new mongoose.Schema({
     address : {
         type : String,
     },
-    phoneNum : {
+    number : {
         type : Number
     },
     email : {
@@ -41,6 +38,9 @@ const letterSchema = new mongoose.Schema({
         type : String,
     },
     userId : {
+        type : String
+    },
+    completePercentage : {
         type : String
     }
 })
