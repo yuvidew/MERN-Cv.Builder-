@@ -64,7 +64,8 @@ const addPersonalInfo = async (req , res) => {
         result.address = address;
         result.number = number;
         result.email = email;
-
+        result.completePercentage = 30
+        
         result.save();
         
         return res.status(201).json({
@@ -81,12 +82,13 @@ const addEmployInfo = async (req , res) => {
 
     try {
         const result = await coverLetterModel.findById(id);
-
+        
         result.recipient = recipient ;
         result.companyName = companyName ;
         result.streetAddress = streetAddress ;
         result.city = city ;
         result.state = state ;
+        result.completePercentage = 30
         
         result.save();
 
@@ -104,8 +106,8 @@ const addLetterDes = async (req , res) => {
 
     try {
         const result = await coverLetterModel.findById(id);
-
-        result.letterText = letterText
+        result.letterText = letterText;
+        result.completePercentage = 40
 
         result.save();
 
@@ -117,11 +119,23 @@ const addLetterDes = async (req , res) => {
     }
 }
 
+const getPercentage = async (req , res) => {
+    const {id} = req.body;
+
+    try {
+        const result = await resumeModel.findById(id);
+        return res.status(201).json(result.completePercentage)
+    } catch (error) {
+        return res.status(404).json(error)
+    }
+}
+
 module.exports = {
     createLetter,
     getLetter,
     deleteLetter,
     addPersonalInfo,
     addEmployInfo,
-    addLetterDes
+    addLetterDes,
+    getPercentage
 }

@@ -5,16 +5,17 @@ import { ResumeFormWrapper } from './ResumeFormWrapper'
 import { useCreate } from '@/hook/useCreate'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
+import { Skeleton } from '@/components/ui/skeleton'
 
 
 export const CreateResume = () => {
-    const router = useParams()
+    const {id} = useParams()
     const {fetchData} = useCreate()
     const [title , setTitle] = useState('Personal Info')
 
     const {data , isPending} = useQuery({
-        queryKey : ['find percentage'],
-        queryFn : () => fetchData(`https://mern-cv-builder.onrender.com/api/get/resume/percentage/${router.id}`)
+        queryKey : ['find percentage' , id],
+        queryFn : () => fetchData(`https://mern-cv-builder.onrender.com/api/get/resume/percentage/${id}`)
     })
 
     return (
@@ -38,7 +39,11 @@ export const CreateResume = () => {
                                 textTransform : 'capitalize'
                         }}
                     >{title}</h1>
-                    <p className=' text-right'> {data}%</p>
+                    {isPending ? (
+                        <Skeleton className={'h-5 w-8'} />
+                    ) :(
+                        <p className=' text-right'> {data}%</p>
+                    )}
                     <Progress className = "mt-6 h-[.7rem]" value={data} />
                 </section>
                 <ResumeFormWrapper 

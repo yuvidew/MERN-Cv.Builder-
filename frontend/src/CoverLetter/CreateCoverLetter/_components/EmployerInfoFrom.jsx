@@ -58,7 +58,7 @@ export const EmployerInfoFrom = ({
 
     const {mutate , isPending , isSuccess} = useMutation({
         mutationKey : ['add personal info in cover letter' , id],
-        mutationFn : (data) => onCreate(`http://localhost:2000/api/post/cover-letter/employ-info/${id}` , data)
+        mutationFn : (data) => onCreate(`https://mern-cv-builder.onrender.com/api/post/cover-letter/employ-info/${id}` , data)
     })
 
 
