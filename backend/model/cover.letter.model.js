@@ -41,7 +41,7 @@ const letterSchema = new mongoose.Schema({
         type : String
     },
     completePercentage : {
-        type : String
+        type : Number
     }
 })
 

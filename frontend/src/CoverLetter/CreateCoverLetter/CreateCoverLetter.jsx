@@ -14,7 +14,7 @@ export const CreateCoverLetter = () => {
 
     const {data , isPending} = useQuery({
         queryKey : ['find percentage' , id],
-        queryFn : () => fetchData(`http://localhost:2000/api/get/cover-letter/percentage/${id}`)
+        queryFn : () => fetchData(`https://mern-cv-builder.onrender.com/api/get/cover-letter/percentage/${id}`)
     })
 
     return (
@@ -31,19 +31,20 @@ export const CreateCoverLetter = () => {
                 </header>
                 <section>
                     <h1 
-                        className=' lg:text-[2.5rem] md:text-[1.7rem] text-[1.5rem] mt-4 text-stone-500 font-medium dark:text-stone-300'
+                        className=' lg:text-[2.5rem] md:text-[1.7rem] text-[1.5rem] lg:text-left text-center mt-4 text-stone-500 font-medium dark:text-stone-300'
                         style={{
                                 textTransform : 'capitalize'
                         }}
                     >{title}</h1>
+
                     {isPending ? (
-                        <div className=' flex items-end justify-end'>
+                        <div className=' items-end justify-end lg:flex hidden'>
                             <Skeleton className={'h-5 w-8 text-right'} />
                         </div>
                     ) :(
-                        <p className=' text-right'> {data}%</p>
+                        <p className=' text-right lg:block hidden'> {data}%</p>
                     )}
-                    <Progress className = "mt-6 h-[.7rem]" value={data} />
+                    <Progress className = " lg:block hidden mt-6 h-[.7rem]" value={data} />
                 </section>
                 <LetterFormsWrapper setTitle={setTitle} />
             </div>

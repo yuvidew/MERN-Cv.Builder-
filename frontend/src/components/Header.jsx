@@ -11,7 +11,7 @@ export const Header = () => {
         <header className=' h-[6rem] border-b border-b-stone-300 dark:border-b-stone-600 '>
             <main className=' container flex items-center justify-between h-full'>
                 <div className='h-full flex items-center justify-start'>
-                <h1 className='lg:hidden lg:text-[2rem] md:text-[1.5rem] text-[1.3rem] font-medium text-blue-600 dark:text-stone-100'>Cv.Builder</h1>
+                <h1 className='lg:hidden lg:text-[2rem] md:text-[1.5rem] text-[1.3rem] font-medium text-blue-600'>Cv.Builder</h1>
                     <div className='lg:flex hidden items-center gap-2 bg-stone-300 dark:bg-stone-100 px-3 rounded-md'>
                         <Search className='h-4 w-5 ml-2 dark:text-stone-900' />
                         <Input 
