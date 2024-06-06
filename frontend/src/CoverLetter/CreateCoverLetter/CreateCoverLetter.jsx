@@ -1,6 +1,6 @@
 import { ModeToggle } from '@/components/ui/ModeTogle'
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { LetterFormsWrapper } from './LetterFormsWrapper'
 import { Progress } from '@/components/ui/progress'
 import { useCreate } from '@/hook/useCreate'
@@ -22,10 +22,12 @@ export const CreateCoverLetter = () => {
             <div className=' container'>
                 <header>
                     <main className='flex items-center justify-between h-[5rem]'>
-                        <h1 
-                            className=' lg:text-[2rem] md:text-[1.5rem] text-[1.3rem] font-medium text-blue-600 dark:text-stone-100'>
-                            Cv.Builder
-                        </h1>
+                        <NavLink to={'/dashboard/cover-letter'} >
+                            <h1 
+                                className=' lg:text-[2rem] md:text-[1.5rem] text-[1.3rem] font-medium text-blue-600'>
+                                Cv.Builder
+                            </h1>
+                        </NavLink>
                         <ModeToggle/>
                     </main>
                 </header>

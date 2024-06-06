@@ -60,20 +60,20 @@ export const LetterFormsWrapper = ({
         <>
             <section className='lg:hidden mt-[2rem]'>
                 <Accordion type="single" collapsible >
-                {btnList.map(ele => (
-                    <AccordionItem value={ele.url} key={ele.url} className={``}>
-                        <AccordionTrigger 
-                            className = 'w-[100%] border py-4'
-                            key={ele.text} 
-                            onClick = {() => onSelect(ele.url)}
-                        >
-                            {ele.text}
-                        </AccordionTrigger>
-                        <AccordionContent>
-                            {theComp[0].comp }
-                        </AccordionContent>
-                    </AccordionItem>
-                ))}
+                    {btnList.map(ele => (
+                        <AccordionItem value={ele.url} key={ele.url} className={``}>
+                            <AccordionTrigger 
+                                className = 'w-[100%] border py-4'
+                                key={ele.text} 
+                                onClick = {() => onSelect(ele.url)}
+                            >
+                                {ele.text}
+                            </AccordionTrigger>
+                            <AccordionContent>
+                                {theComp[0].comp }
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
                 </Accordion>
 
             </section>
