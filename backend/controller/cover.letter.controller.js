@@ -65,7 +65,7 @@ const addPersonalInfo = async (req , res) => {
         result.address = address;
         result.number = number;
         result.email = email;
-        result.completePercentage = 30
+        result.completePercentage += 30
         
         result.save();
         
@@ -89,7 +89,7 @@ const addEmployInfo = async (req , res) => {
         result.streetAddress = streetAddress ;
         result.city = city ;
         result.state = state ;
-        result.completePercentage = 30
+        result.completePercentage += 30
         
         result.save();
 
@@ -108,7 +108,7 @@ const addLetterDes = async (req , res) => {
     try {
         const result = await coverLetterModel.findById(id);
         result.letterText = letterText;
-        result.completePercentage = 40
+        result.completePercentage += 40
 
         result.save();
 

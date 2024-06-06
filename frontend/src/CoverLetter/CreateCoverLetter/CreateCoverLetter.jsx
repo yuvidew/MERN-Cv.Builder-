@@ -17,8 +17,6 @@ export const CreateCoverLetter = () => {
         queryFn : () => fetchData(`http://localhost:2000/api/get/cover-letter/percentage/${id}`)
     })
 
-    console.log(data , "object");
-
     return (
         <div className='dark:bg-stone-800 h-[100vh]' >
             <div className=' container'>
@@ -45,7 +43,7 @@ export const CreateCoverLetter = () => {
                     ) :(
                         <p className=' text-right'> {data}%</p>
                     )}
-                    <Progress className = "mt-6 h-[.7rem]" value={20} />
+                    <Progress className = "mt-6 h-[.7rem]" value={data} />
                 </section>
                 <LetterFormsWrapper setTitle={setTitle} />
             </div>
