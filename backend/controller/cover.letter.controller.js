@@ -5,6 +5,7 @@ const createLetter = async( req , res) => {
     try {
         const result = await coverLetterModel.create({
             letterName : name,
+            completePercentage : 0,
             userId
         })
 
@@ -120,10 +121,11 @@ const addLetterDes = async (req , res) => {
 }
 
 const getPercentage = async (req , res) => {
-    const {id} = req.body;
+    const {id} = req.params;
 
     try {
-        const result = await resumeModel.findById(id);
+        const result = await coverLetterModel.findById(id);
+        console.log(result);
         return res.status(201).json(result.completePercentage)
     } catch (error) {
         return res.status(404).json(error)

@@ -6,11 +6,11 @@ import React from 'react'
 
 const id = JSON.parse(localStorage.getItem('cv_user'))
 
-export const iContainer = () => {
+export const Container = () => {
     const {fetchData} = useCreate();
     const {data , isPending , isError} = useQuery({
         queryKey : ['fetch cover letters'],
-        queryFn : () => fetchData(`http://localhost:2000/api/get/all/cover-letter/${id._id}`)
+        queryFn : () => fetchData(`https://mern-cv-builder.onrender.com/api/get/all/cover-letter/${id._id}`)
     })
 
     return (

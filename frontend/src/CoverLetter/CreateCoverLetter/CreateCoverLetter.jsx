@@ -14,8 +14,10 @@ export const CreateCoverLetter = () => {
 
     const {data , isPending} = useQuery({
         queryKey : ['find percentage' , id],
-        queryFn : () => fetchData(`https://mern-cv-builder.onrender.com/api/get/cover-letter/percentage/${id}`)
+        queryFn : () => fetchData(`http://localhost:2000/api/get/cover-letter/percentage/${id}`)
     })
+
+    console.log(data , "object");
 
     return (
         <div className='dark:bg-stone-800 h-[100vh]' >
