@@ -125,10 +125,20 @@ const getPercentage = async (req , res) => {
 
     try {
         const result = await coverLetterModel.findById(id);
-        console.log(result);
         return res.status(201).json(result.completePercentage)
     } catch (error) {
         return res.status(404).json(error)
+    }
+}
+
+const getCoverLetterById = async (req , res) => {
+    const {id} = req.params;
+    
+    try {
+        const result = await coverLetterModel.findById(id)
+        return res.status(200).json(result);
+    } catch (error) {
+        return res.status(404).json(error) 
     }
 }
 
@@ -139,5 +149,6 @@ module.exports = {
     addPersonalInfo,
     addEmployInfo,
     addLetterDes,
-    getPercentage
+    getPercentage,
+    getCoverLetterById
 }

@@ -1,7 +1,7 @@
 const express = require('express')
 const {signUp, signIn } = require('../controller/authentication.controller')
-const { createResume, addPersonal, addWorkExperience, addProject, getProjectList, deleteProject, addEducation, addSkills, getCompletePercentage, getAllResume } = require('../controller/resume.controler')
-const { createLetter, getLetter, deleteLetter , addPersonalInfo, addEmployInfo, addLetterDes, getPercentage } = require('../controller/cover.letter.controller')
+const { createResume, addPersonal, addWorkExperience, addProject, getProjectList, deleteProject, addEducation, addSkills, getCompletePercentage, getAllResume, getResumeById } = require('../controller/resume.controler')
+const { createLetter, getLetter, deleteLetter , addPersonalInfo, addEmployInfo, addLetterDes, getPercentage, getCoverLetterById } = require('../controller/cover.letter.controller')
 const router = express.Router()
 
 /** auth routers */
@@ -21,6 +21,7 @@ router.post('/post/create/resume/add-eduction-detail/:id' , addEducation)
 router.post('/post/create/resume/add-skills/:id' , addSkills)
 router.get('/get/resume/percentage/:id' , getCompletePercentage)
 router.get('/get/resumes/:userId' , getAllResume)
+router.get('/get/resume/:id' , getResumeById)
 
 
 /** letter routers */
@@ -32,6 +33,7 @@ router.post('/post/cover-letter/personal-info/:id' , addPersonalInfo)
 router.post('/post/cover-letter/employ-info/:id' , addEmployInfo)
 router.post('/post/cover-letter/letter-description/:id' , addLetterDes)
 router.get('/get/cover-letter/percentage/:id' , getPercentage)
+router.get('/get/cover-letter/:id' , getCoverLetterById)
 
 
 module.exports = router

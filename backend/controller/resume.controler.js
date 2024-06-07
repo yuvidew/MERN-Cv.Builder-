@@ -190,6 +190,18 @@ const getAllResume = async (req , res) => {
     }
 }
 
+const getResumeById = async (req , res) => {
+    const {id} = req.params;
+
+    try {
+        const result = await resumeModel.findById(id)
+
+        return res.status(200).json(result)
+    } catch (error) {
+        return res.status(404).json(error)
+    }
+}
+
 
 module.exports = {
     createResume,
@@ -201,5 +213,6 @@ module.exports = {
     addEducation,
     addSkills,
     getCompletePercentage,
-    getAllResume
+    getAllResume,
+    getResumeById
 }
