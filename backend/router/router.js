@@ -1,7 +1,7 @@
 const express = require('express')
 const {signUp, signIn } = require('../controller/authentication.controller')
 const { createResume, addPersonal, addWorkExperience, addProject, getProjectList, deleteProject, addEducation, addSkills, getCompletePercentage, getAllResume, getResumeById } = require('../controller/resume.controler')
-const { createLetter, getLetter, deleteLetter , addPersonalInfo, addEmployInfo, addLetterDes, getPercentage, getCoverLetterById } = require('../controller/cover.letter.controller')
+const { createLetter, getLetter, deleteLetter , addPersonalInfo, addLetterDes, getPercentage, getCoverLetterById, addCompanyInfo } = require('../controller/cover.letter.controller')
 const router = express.Router()
 
 /** auth routers */
@@ -30,7 +30,7 @@ router.post('/post/create/cover-letter' , createLetter)
 router.get('/get/all/cover-letter/:userId' , getLetter)
 router.delete('/delete/cover-letter/:id' , deleteLetter)
 router.post('/post/cover-letter/personal-info/:id' , addPersonalInfo)
-router.post('/post/cover-letter/employ-info/:id' , addEmployInfo)
+router.post('/post/cover-letter/employ-info/:id' , addCompanyInfo)
 router.post('/post/cover-letter/letter-description/:id' , addLetterDes)
 router.get('/get/cover-letter/percentage/:id' , getPercentage)
 router.get('/get/cover-letter/:id' , getCoverLetterById)

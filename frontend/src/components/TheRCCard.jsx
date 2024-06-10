@@ -80,12 +80,23 @@ export const TheRCCard = ({
                     <Progress className = "lg:h-[.8rem] md:h-[.8rem] h-[.5rem] mt-[1rem]" value = {ele.completePercentage} />
 
                 </NavLink>
-                {ele.completePercentage == 100 && (
+                {/* {ele.completePercentage == 100 && (
                     <ResumeCoverLetterDialog 
-                        url = {ele.letterName  ?  `http://localhost:2000/api/get/cover-letter/${ele._id}` : `http://localhost:2000/api/get/resume/${ele._id}`}
+                        url = {ele.letterName  ?  `https://mern-cv-builder.onrender.com/api/get/cover-letter/${ele._id}` : `https://mern-cv-builder.onrender.com/api/get/resume/${ele._id}`}
                         btnText={ele.letterName ? 'Check Letter' : "Check resume"}
                         id={ele._id}
                     />
+                    <Button></Button>
+                )} */}
+
+                {ele.completePercentage == 100 && (
+                    <NavLink to={ele.letterName ? `/cover-letter/${ele._id}` : `/resume/${ele._id}`}>
+                        <Button 
+                            size = "sm" 
+                            variant ='ghost' 
+                            className = "mt-5 w-full"
+                        >{ele.letterName ? 'Check Letter' : "Check resume"}</Button>
+                    </NavLink>
                 )}
                 <br />
             </CardContent>

@@ -1,13 +1,13 @@
 const { default: mongoose } = require("mongoose");
 
 const letterSchema = new mongoose.Schema({
+    // this is for identify the letter 
     letterName : {
         type : String,
     },
+
+    // add user personal info 
     name : {
-        type : String,
-    },
-    profession : {
         type : String,
     },
     address : {
@@ -19,7 +19,18 @@ const letterSchema = new mongoose.Schema({
     email : {
         type : String,
     },
-    recipient : {
+    city : {
+        type : String,
+    },
+    state : {
+        type : String,
+    },
+    zipCode : {
+        type : Number,
+    },
+
+    // which position for the letter
+    position : {
         type : String,
     },
     companyName : {
@@ -28,15 +39,22 @@ const letterSchema = new mongoose.Schema({
     streetAddress : {
         type : String,
     },
-    city : {
+    companyCity : {
         type : String,
     },
-    state : {
+    companyState : {
         type : String,
     },
+    companyZipCode : {
+        type : Number
+    },
+
+    // application text 
+
     letterText : {
         type : String,
     },
+    
     userId : {
         type : String
     },

@@ -41,7 +41,7 @@ export const LetterDesFrom = () => {
                 <div  className=' mb-5'>
                     <Label 
                         htmlFor="email"
-                        className = " uppercase text-stone-600 dark:text-stone-300 text-[1rem] block mb-3"
+                        className = " capitalize text-stone-600 dark:text-stone-300 text-[1rem] block mb-3"
                     >
                         Letter Description <span className=' text-red-500'>*</span>
                     </Label>

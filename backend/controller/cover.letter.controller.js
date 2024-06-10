@@ -22,40 +22,9 @@ const createLetter = async( req , res) => {
     }
 }
 
-const getLetter = async (req , res) => {
-    const {userId} = req.params;
-    try {
-        const result = await coverLetterModel.find({userId});
-
-        return res.status(200).json(result)
-    } catch (error) {
-        return res.status(404).json({
-            msg : 'Failed to fetch cover letter'
-        })
-    }
-}
-
-const deleteLetter = async (req , res) => {
-    const {id} = req.params;
-
-    try {
-        const result = await coverLetterModel.findOneAndDelete(id);
-
-        if(result){
-            return res.status(201).json({
-                msg : `Cover Letter successfully delete`
-            })
-        }
-    } catch (error) {
-        return res.status(404).json({
-            msg : 'Failed to delete cover letter'
-        })
-    }
-}
-
 const addPersonalInfo = async (req , res) => {
     const {id} = req.params ; 
-    const {name , profession , address , number , email} = req.body;
+    const {name , profession , address , number , email , zipCode} = req.body;
 
     try {
         const result = await coverLetterModel.findById(id);
@@ -65,6 +34,7 @@ const addPersonalInfo = async (req , res) => {
         result.address = address;
         result.number = number;
         result.email = email;
+        result.zipCode = zipCode
         result.completePercentage += 30
         
         result.save();
@@ -77,18 +47,19 @@ const addPersonalInfo = async (req , res) => {
     }
 }
 
-const addEmployInfo = async (req , res) => {
+const addCompanyInfo = async (req , res) => {
     const {id} = req.params;
-    const {recipient , companyName  ,streetAddress , city  , state} = req.body;
+    const {position , companyName  ,streetAddress , companyCity  , companyState , companyZipCode} = req.body;
 
     try {
         const result = await coverLetterModel.findById(id);
         
-        result.recipient = recipient ;
+        result.position = position ;
         result.companyName = companyName ;
         result.streetAddress = streetAddress ;
-        result.city = city ;
-        result.state = state ;
+        result.companyCity = companyCity ;
+        result.companyState = companyState ;
+        result.companyZipCode = companyZipCode ;
         result.completePercentage += 30
         
         result.save();
@@ -142,12 +113,44 @@ const getCoverLetterById = async (req , res) => {
     }
 }
 
+const getLetter = async (req , res) => {
+    const {userId} = req.params;
+    try {
+        const result = await coverLetterModel.find({userId});
+
+        return res.status(200).json(result)
+    } catch (error) {
+        return res.status(404).json({
+            msg : 'Failed to fetch cover letter'
+        })
+    }
+}
+
+const deleteLetter = async (req , res) => {
+    const {id} = req.params;
+
+    try {
+        const result = await coverLetterModel.findOneAndDelete(id);
+
+        if(result){
+            return res.status(201).json({
+                msg : `Cover Letter successfully delete`
+            })
+        }
+    } catch (error) {
+        return res.status(404).json({
+            msg : 'Failed to delete cover letter'
+        })
+    }
+}
+
+
 module.exports = {
     createLetter,
     getLetter,
     deleteLetter,
     addPersonalInfo,
-    addEmployInfo,
+    addCompanyInfo,
     addLetterDes,
     getPercentage,
     getCoverLetterById
