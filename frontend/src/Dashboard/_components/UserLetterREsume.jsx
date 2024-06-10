@@ -5,6 +5,7 @@ import {
     TabsList, 
     TabsTrigger 
 } from "@/components/ui/tabs"
+import { AllCoverResume } from './AllCoverResume'
 
 
 export const UserLetterREsume = () => {
@@ -16,7 +17,9 @@ export const UserLetterREsume = () => {
                     <TabsTrigger value="resume">Resume</TabsTrigger>
                     <TabsTrigger value="cover letter">Cover Letter</TabsTrigger>
                 </TabsList>
-                <TabsContent value="all">Make changes to your account here.</TabsContent>
+                <TabsContent value="all">
+                    <AllCoverResume/>
+                </TabsContent>
                 <TabsContent value="resume">Change your password here.</TabsContent>
                 <TabsContent value="cover letter">Change your cover letter here.</TabsContent>
             </Tabs>

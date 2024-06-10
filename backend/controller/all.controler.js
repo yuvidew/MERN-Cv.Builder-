@@ -14,9 +14,11 @@ const mixArrays = (array1, array2) => {
 const getAll = async (req , res) => {
     const {userId} = req.params;
     try {
+
         const resumes = await resumeModel.find({userId})
         const letters = await coverLetterModel.find({userId})
-        const allData = await mixArrays(resumes , letters)
+
+        const allData = mixArrays(resumes , letters)
 
         return res.status(200).json(allData)
     } catch (error) {

@@ -10,7 +10,7 @@ const DashBoardPage = () => {
             <div className=' h-full lg:w-[15%] lg:block hidden  border-r border-r-stone-300 dark:border-r-stone-700'>
                 <SideBar/>
             </div>
-            <div className=' h-full lg:w-[85%] w-full'>
+            <div className=' h-full lg:w-[85%] w-full overflow-y-auto'>
                 <Header/>
                 <HeroPage/>
                 <UserLetterREsume/>
