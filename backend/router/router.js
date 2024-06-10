@@ -2,6 +2,7 @@ const express = require('express')
 const {signUp, signIn } = require('../controller/authentication.controller')
 const { createResume, addPersonal, addWorkExperience, addProject, getProjectList, deleteProject, addEducation, addSkills, getCompletePercentage, getAllResume, getResumeById } = require('../controller/resume.controler')
 const { createLetter, getLetter, deleteLetter , addPersonalInfo, addLetterDes, getPercentage, getCoverLetterById, addCompanyInfo } = require('../controller/cover.letter.controller')
+const { getAll } = require('../controller/all.controler')
 const router = express.Router()
 
 /** auth routers */
@@ -34,6 +35,11 @@ router.post('/post/cover-letter/employ-info/:id' , addCompanyInfo)
 router.post('/post/cover-letter/letter-description/:id' , addLetterDes)
 router.get('/get/cover-letter/percentage/:id' , getPercentage)
 router.get('/get/cover-letter/:id' , getCoverLetterById)
+
+
+/** all data */
+
+router.get('/get/all/:userId' , getAll)
 
 
 module.exports = router
