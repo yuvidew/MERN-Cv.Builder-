@@ -11,7 +11,7 @@ const mixArrays = (array1, array2) => {
     });
 }
 
-export const getAll = async (req , res) => {
+const getAll = async (req , res) => {
     const {userId} = req.params;
     try {
         const resumes = await resumeModel.find({userId})
@@ -25,4 +25,8 @@ export const getAll = async (req , res) => {
         })
     }
 
+}
+
+module.exports = {
+    getAll
 }

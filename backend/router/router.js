@@ -39,7 +39,7 @@ router.get('/get/cover-letter/:id' , getCoverLetterById)
 
 /** all data */
 
-router.get('/get/all/:userId' , getAll)
+router.get('/get/all/:userId' ,getAll)
 
 
 module.exports = router
