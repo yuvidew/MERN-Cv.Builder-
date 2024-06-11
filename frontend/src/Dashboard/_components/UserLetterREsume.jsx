@@ -6,7 +6,9 @@ import {
     TabsTrigger 
 } from "@/components/ui/tabs"
 import { AllCoverResume } from './AllCoverResume'
+import { AllResumeOrCover } from './AllResumeOrCover'
 
+const user = JSON.parse(localStorage.getItem('cv_user'))
 
 export const UserLetterREsume = () => {
     return (
@@ -15,13 +17,17 @@ export const UserLetterREsume = () => {
                 <TabsList>
                     <TabsTrigger value="all">All</TabsTrigger>
                     <TabsTrigger value="resume">Resume</TabsTrigger>
-                    <TabsTrigger value="cover letter">Cover Letter</TabsTrigger>
+                    <TabsTrigger value="cover-letter">Cover Letter</TabsTrigger>
                 </TabsList>
                 <TabsContent value="all">
-                    <AllCoverResume/>
+                    <AllCoverResume url={`https://mern-cv-builder.onrender.com/api/get/all/${user._id}`} />
                 </TabsContent>
-                <TabsContent value="resume">Change your password here.</TabsContent>
-                <TabsContent value="cover letter">Change your cover letter here.</TabsContent>
+                <TabsContent value="resume">
+                    <AllResumeOrCover type={'resume'} url={`https://mern-cv-builder.onrender.com/api/get/resumes/${user._id}`} />
+                </TabsContent>
+                <TabsContent value="cover-letter">
+                    <AllResumeOrCover type={'cover letter'} url={`https://mern-cv-builder.onrender.com/api/get/all/cover-letter/${user._id}`} />
+                </TabsContent>
             </Tabs>
         </section>
     )
