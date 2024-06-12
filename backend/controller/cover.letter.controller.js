@@ -34,7 +34,9 @@ const addPersonalInfo = async (req , res) => {
         result.address = address;
         result.number = number;
         result.email = email;
-        result.zipCode = zipCode
+        result.zipCode = zipCode;
+        result.state = state;
+        result.city = city;
         result.completePercentage += 30
         
         result.save();
