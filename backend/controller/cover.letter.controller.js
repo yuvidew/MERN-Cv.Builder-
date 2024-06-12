@@ -24,7 +24,8 @@ const createLetter = async( req , res) => {
 
 const addPersonalInfo = async (req , res) => {
     const {id} = req.params ; 
-    const {name , profession , address , number , email , zipCode} = req.body;
+    console.log("object");
+    const {name , profession , address , number , email , zipCode , city , state} = req.body;
 
     try {
         const result = await coverLetterModel.findById(id);
@@ -38,7 +39,7 @@ const addPersonalInfo = async (req , res) => {
         result.state = state;
         result.city = city;
         result.completePercentage += 30
-        
+        console.log("object");
         result.save();
         
         return res.status(201).json({
